@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <a href="https://crunchify.com/how-to-create-simple-calculator-android-app-using-android-studio/">calculator</a>
+    <h1>database</h1>
+    <a href="https://www.codingconnect.net/android-application-makes-use-database/">sqlite db</a>
+    <h1>Rss feed</h1>
+    <a href="https://www.codingconnect.net/android-application-makes-use-rss-feed/">Code link</a>
+    <a href="https://feeds.24.com/articles/news24/TopStories/rss">xml link</a>
+    <a href="https://www.news24.com/news24/xarchive/siteelements/services/news24-rss-feeds-20111202">New24.com</a>
+    <h1>Multitreading</h1>
+    <a href="https://www.codingconnect.net/android-application-multi-threading/">Multi thread</a>
+    <h1>gpsn git</h1>
+    <a href="https://github.com/foxandroid/CurrentLocation">gps git</a>
+    <h1>shapes</h1>
+    <a href="https://docs.google.com/document/d/164al-APTr9e6MD4vERDXx0OSgeej7ej8c_nkc5vsfRg/edit?usp=sharing">ddoxs</a>
+    <h1>Notify</h1>
+    <a href="https://docs.google.com/document/d/1-3OKf4lyV5PBEq__8hLNUnelcHyEbnY_GWO-ZqoloW4/edit?usp=sharing">gdocx</a>
+    <p>
+        import android.app.NotificationChannel;
+        import android.app.NotificationManager;
+        import android.content.pm.PackageManager;
+        import android.os.Build;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
+        
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.core.app.ActivityCompat;
+        import androidx.core.app.NotificationCompat;
+        import androidx.core.app.NotificationManagerCompat;
+        
+        
+        public class MainActivity extends AppCompatActivity {
+        
+            Button btn;
+        
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+                btn = findViewById(R.id.button);
+        
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                    NotificationChannel channel= new NotificationChannel("my Notification", "my Notification", NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager manager= getSystemService(NotificationManager.class);
+                    manager.createNotificationChannel(channel);
+                }
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "my Notification");
+                        builder.setContentTitle("New Message");
+                        builder.setContentText("Hello guy");
+                        builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+                        builder.setAutoCancel(true);
+        
+                        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MainActivity.this);
+                        managerCompat.notify(1, builder.build());
+                    }
+                });
+        
+        
+            }
+        }</p>
+</body>
+</html>
